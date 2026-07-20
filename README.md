@@ -57,11 +57,12 @@ Everything runs locally. No account, no telemetry, no transcription service in t
 
 Most transcription apps make you pick a language before you start, and then mangle every sentence that isn't in it. Vozari has a **Multiple** language mode that routes the audio to an engine built for code-switching.
 
-Below is a real 7-minute English/Spanish meeting transcribed in one pass — no language picked, no splitting the file, no second run. The speakers switch mid-sentence and the transcript follows them:
+Below is a real 7-minute English/Spanish meeting transcribed in one pass — no language picked, no splitting the file, no second run. Two people, switching language mid-conversation, each turn timestamped and attributed:
 
-![Bilingual transcript](assets/06-multilingual.png)
+![Bilingual transcript with speaker turns](assets/06-multilingual.png)
 
-> *"…they want to move the launch date up by two weeks. **Dos semanas antes, eso cambia por completo nuestra cronograma de pruebas**, ni siquiera hemos terminado la segunda ronda de control de calidad. I told them that would be tight…"*
+> **Speaker 1** — *"So I just got the email from the client and it looks like they want to move the launch date up by two weeks."*
+> **Speaker 2** — *"Dos semanas antes, eso cambia por completo nuestra cronograma de pruebas, ni siquiera hemos terminado la segunda ronda de control de calidad."*
 
 **Why this works:** an Apple SpeechAnalyzer session is locked to a single locale, so on this exact clip it phonetically mangles the other language — measured WER jumps from 0.04 (monolingual) to 0.30 (bilingual). Vozari's **Multiple** mode routes to Parakeet v3 instead, which handles code-switching at 0.11 WER, **2.6× faster than Whisper and at roughly one-ninth the memory**. That routing decision came out of the benchmark below, not out of a spec sheet.
 
@@ -69,7 +70,7 @@ Below is a real 7-minute English/Spanish meeting transcribed in one pass — no 
 
 ## Multiple speakers
 
-Turn on **Speakers** and Vozari separates the recording into speaker turns, with an optional speaker count when you already know how many people were in the room. Every turn carries a speaker label, and renaming a speaker once relabels every turn in that cluster — including in all seven export formats.
+Turn on **Speakers** and Vozari separates the recording into speaker turns, with an optional speaker count when you already know how many people were in the room — that's what produced the alternating Speaker 1 / Speaker 2 timeline above. Every turn carries a speaker label, and renaming a speaker once relabels every turn in that cluster, including in all seven export formats.
 
 ![Speaker management](assets/07-speakers.png)
 
