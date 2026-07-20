@@ -47,6 +47,10 @@ Everything runs locally. No account, no telemetry, no transcription service in t
 
 ![Settings](assets/04-settings.png)
 
+**Model guide** — a two-question first run picks the engine for you and explains the trade-off in plain language, instead of asking which speech model you'd like.
+
+![Model guide](assets/05-model-guide.png)
+
 ---
 
 ## Why it's different
